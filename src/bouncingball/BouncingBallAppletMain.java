@@ -2,9 +2,12 @@ package bouncingball;
 
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+
 //import java.awt.Rectangle;
 //import java.applet.Applet;
 //import java.awt.Cursor;
@@ -16,20 +19,29 @@ import javax.swing.WindowConstants;
 //import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class ScreenSaverAppletMain extends JFrame  {
+public class BouncingBallAppletMain extends JFrame  {
+//	public Component rect3 = new SquareShape(50, 50, 100, Color.red);
 	Shape rect1 = new SquareShape(50, 50, 100, Color.red);
 	Shape rect2 = new SquareShape(1000, 500, 100, Color.green);
 	background e=new background();
     public static void main(String[] args) {
-    	ScreenSaverAppletMain app = new ScreenSaverAppletMain();
+    	BouncingBallAppletMain app = new BouncingBallAppletMain();
         app.setVisible(true);
     }
-	public ScreenSaverAppletMain(){
+	public BouncingBallAppletMain(){
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(1360, 720);
 		refresh thread= new refresh();	
 		thread.myapplet = this;
 		thread.start();
+	}
+//	MouseDragListener MouseDragListener1 = new MouseDragListener(){
+//	    void dragReleased(MouseEvent start,MouseEvent end){
+//	    	System.out.println("Its Been Clicked");
+//	    }
+//	};
+	void mouseClicked(MouseEvent e){
+		System.out.println("Its Been Clicked");
 	}
 	public void paint(Graphics g){
 	//	Random r = new Random();
@@ -58,7 +70,7 @@ public class ScreenSaverAppletMain extends JFrame  {
 		}
 	}
 	public class refresh extends Thread{
-		public ScreenSaverAppletMain myapplet;
+		public BouncingBallAppletMain myapplet;
 		public void run(){
 			while(true){
 			myapplet.repaint();

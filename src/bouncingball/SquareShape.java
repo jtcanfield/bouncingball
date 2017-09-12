@@ -23,12 +23,19 @@ public class SquareShape extends Shape {
 //			sleep(2);
 //			System.out.println(horizontalposi);
 //		System.out.println(vertivelocity);
+			//HORIZONTAL
 			if (x <=20){
 				horizontalposi = true;
 			}
 			if (x + width >=1340){
 				horizontalposi = false;
 			}
+			if (horizontalposi == true){
+				x = x +horivelocity;
+			} else {
+				x = x -horivelocity;
+			}
+			//VERTICAL
 			if (y <=40){
 				verticalposi = true;
 				verticalVELOCITYposi = true;
@@ -36,11 +43,6 @@ public class SquareShape extends Shape {
 			if (y + width >=700){	
 				verticalposi = false;
 				verticalVELOCITYposi = false;
-			}
-			if (horizontalposi == true){
-				x = x +horivelocity;
-			} else {
-				x = x -horivelocity;
 			}
 			if (vertivelocity == 0){
 				verticalVELOCITYposi = true;
