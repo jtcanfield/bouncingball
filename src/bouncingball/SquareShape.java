@@ -16,8 +16,8 @@ public class SquareShape extends Shape {
     boolean verticalposi = true;
     boolean horivelocposi = true;
     boolean verticalVELOCITYposi = true;
-	int horivelocity = 20;
-	int vertivelocity = 20;
+	int horivelocity = 1;
+	int vertivelocity = 1;
 	public void draw(Graphics g){
 //		try {
 //			sleep(2);
@@ -35,7 +35,6 @@ public class SquareShape extends Shape {
 			}
 			if (y + width >=700){	
 				verticalposi = false;
-//				vertivelocity = vertivelocity + 5;
 				verticalVELOCITYposi = false;
 			}
 			if (horizontalposi == true){
@@ -51,6 +50,9 @@ public class SquareShape extends Shape {
 				vertivelocity = vertivelocity +1;
 			} else if (verticalVELOCITYposi == false && vertivelocity >= 0){
 				vertivelocity = vertivelocity -1;
+			}
+			if (vertivelocity <= 1 && y + width >=700){
+				vertivelocity = 0;
 			}
 			if (verticalposi == true){
 				y = y +vertivelocity;

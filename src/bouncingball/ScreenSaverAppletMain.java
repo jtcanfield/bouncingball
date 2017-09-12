@@ -46,7 +46,7 @@ public class ScreenSaverAppletMain extends JFrame  {
 	//	int i1 = r.nextInt(8);
 	//	g.setColor(colors[i1]);
 	//	g.fillRect(rect1.x,rect1.y,rect1.width,rect1.height);
-		e.draw(g);//IF YOU COMMENT THIS OUT, YOU GET A SUPER COOL GRAPHIC EFFECT
+		e.draw(g);
 		rect1.draw(g);
 		rect2.draw(g);
 	}
@@ -60,8 +60,6 @@ public class ScreenSaverAppletMain extends JFrame  {
 	public class refresh extends Thread{
 		public ScreenSaverAppletMain myapplet;
 		public void run(){
-//			myapplet.repaint();
-//			animation(myapplet.getGraphics());//IF YOU UNCOMMENT THIS OUT, YOU GET A SUPER COOL GRAPHIC EFFECT
 			while(true){
 			myapplet.repaint();
 			animation(myapplet.getGraphics());
