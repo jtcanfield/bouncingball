@@ -1,13 +1,15 @@
 package bouncingball;
 
-import java.awt.event.MouseAdapter;
-import java.awt.Component;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Component;
 //import org.w3c.dom.events.MouseEvent;
 
 public abstract /*static*/ class MouseDragListener extends Shape {
     java.awt.Component component;
+//    Shape component;
     MouseEvent dragStart;
 
     public MouseDragListener(java.awt.Component component) {
@@ -15,7 +17,7 @@ public abstract /*static*/ class MouseDragListener extends Shape {
         this.component = component;
         component.addMouseMotionListener(new MouseAdapter() {
             public void mouseMoved(MouseEvent e) {
-
+            	System.out.println("Its Been Clicked");
                 dragStart = null;
             }
 

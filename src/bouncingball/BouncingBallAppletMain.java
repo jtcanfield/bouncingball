@@ -1,12 +1,12 @@
 package bouncingball;
 
 
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
-import java.awt.Color;
-import java.awt.Component;
+
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import java.awt.*;
+import java.awt.event.*;
 
 //import java.awt.Rectangle;
 //import java.applet.Applet;
@@ -23,10 +23,19 @@ public class BouncingBallAppletMain extends JFrame  {
 //	public Component rect3 = new SquareShape(50, 50, 100, Color.red);
 	Shape rect1 = new SquareShape(50, 50, 100, Color.red);
 	Shape rect2 = new SquareShape(1000, 500, 100, Color.green);
-	background e=new background();
+	background background=new background();
     public static void main(String[] args) {
     	BouncingBallAppletMain app = new BouncingBallAppletMain();
         app.setVisible(true);
+    }
+    Button aButton = new Button();
+
+    static class MyActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            System.out.println("Hello There");
+        }
     }
 	public BouncingBallAppletMain(){
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -35,11 +44,12 @@ public class BouncingBallAppletMain extends JFrame  {
 		thread.myapplet = this;
 		thread.start();
 	}
-//	MouseDragListener MouseDragListener1 = new MouseDragListener(){
-//	    void dragReleased(MouseEvent start,MouseEvent end){
-//	    	System.out.println("Its Been Clicked");
-//	    }
-//	};
+	MouseDragListener MouseDragListener1 = new MouseDragListener(background){
+	    void dragReleased(MouseEvent start,MouseEvent end){
+	    	System.out.println("Its Been Clicked");
+	    	
+	    }
+	};
 	void mouseClicked(MouseEvent e){
 		System.out.println("Its Been Clicked");
 	}
@@ -58,7 +68,7 @@ public class BouncingBallAppletMain extends JFrame  {
 	//	int i1 = r.nextInt(8);
 	//	g.setColor(colors[i1]);
 	//	g.fillRect(rect1.x,rect1.y,rect1.width,rect1.height);
-		e.draw(g);
+		background.draw(g);
 		rect1.draw(g);
 		rect2.draw(g);
 	}
