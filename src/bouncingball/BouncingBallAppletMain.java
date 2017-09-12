@@ -1,13 +1,10 @@
 package bouncingball;
 
-
 import java.awt.event.MouseEvent;
-
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import java.awt.*;
-import java.awt.event.*;
-
+//import java.awt.event.*;
 //import java.awt.Rectangle;
 //import java.applet.Applet;
 //import java.awt.Cursor;
@@ -28,15 +25,6 @@ public class BouncingBallAppletMain extends JFrame  {
     	BouncingBallAppletMain app = new BouncingBallAppletMain();
         app.setVisible(true);
     }
-    Button aButton = new Button();
-
-    static class MyActionListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            System.out.println("Hello There");
-        }
-    }
 	public BouncingBallAppletMain(){
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(1360, 720);
@@ -50,9 +38,6 @@ public class BouncingBallAppletMain extends JFrame  {
 	    	
 	    }
 	};
-	void mouseClicked(MouseEvent e){
-		System.out.println("Its Been Clicked");
-	}
 	public void paint(Graphics g){
 	//	Random r = new Random();
 	//	Color [] colors = new Color[9];
