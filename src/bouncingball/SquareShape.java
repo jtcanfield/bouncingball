@@ -12,11 +12,57 @@ public class SquareShape extends Shape {
 		super.height=width;
 		super.color=color;
 	}
+	boolean horizontalposi = true;
+    boolean verticalposi = true;
+    boolean horivelocposi = true;
+    boolean verticalVELOCITYposi = true;
+	int horivelocity = 20;
+	int vertivelocity = 20;
 	public void draw(Graphics g){
+//		try {
+//			sleep(2);
+//			System.out.println(horizontalposi);
+//		System.out.println(vertivelocity);
+			if (x <=20){
+				horizontalposi = true;
+			}
+			if (x + width >=1340){
+				horizontalposi = false;
+			}
+			if (y <=40){
+				verticalposi = true;
+				verticalVELOCITYposi = true;
+			}
+			if (y + width >=700){	
+				verticalposi = false;
+//				vertivelocity = vertivelocity + 5;
+				verticalVELOCITYposi = false;
+			}
+			if (horizontalposi == true){
+				x = x +horivelocity;
+			} else {
+				x = x -horivelocity;
+			}
+			if (vertivelocity == 0){
+				verticalVELOCITYposi = true;
+				verticalposi = true;
+			}
+			if (verticalVELOCITYposi == true && vertivelocity <= 30){
+				vertivelocity = vertivelocity +1;
+			} else if (verticalVELOCITYposi == false && vertivelocity >= 0){
+				vertivelocity = vertivelocity -1;
+			}
+			if (verticalposi == true){
+				y = y +vertivelocity;
+			} else {
+				y = y -vertivelocity;
+			}
+				
+//			}
+//		catch (InterruptedException e){
+//				e.printStackTrace();
+//		}
 		g.setColor(color);
 		g.fillRect(x,y,width,height);
-	}
-	public void rotate(int direction){
-		//done
 	}
 }

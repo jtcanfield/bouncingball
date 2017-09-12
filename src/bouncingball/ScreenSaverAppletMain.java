@@ -3,9 +3,9 @@ package bouncingball;
 
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+//import java.awt.Rectangle;
 //import java.applet.Applet;
 //import java.awt.Cursor;
 //import java.awt.Event;
@@ -17,6 +17,9 @@ import javax.swing.WindowConstants;
 
 @SuppressWarnings("serial")
 public class ScreenSaverAppletMain extends JFrame  {
+	Shape rect1 = new SquareShape(50, 50, 100, Color.red);
+	Shape rect2 = new SquareShape(1000, 500, 100, Color.green);
+	background e=new background();
     public static void main(String[] args) {
     	ScreenSaverAppletMain app = new ScreenSaverAppletMain();
         app.setVisible(true);
@@ -28,8 +31,6 @@ public class ScreenSaverAppletMain extends JFrame  {
 		thread.myapplet = this;
 		thread.start();
 	}
-	Shape rect1 = new SquareShape(30, 30, 100, Color.red);
-	background e=new background();
 	public void paint(Graphics g){
 	//	Random r = new Random();
 	//	Color [] colors = new Color[9];
@@ -45,52 +46,27 @@ public class ScreenSaverAppletMain extends JFrame  {
 	//	int i1 = r.nextInt(8);
 	//	g.setColor(colors[i1]);
 	//	g.fillRect(rect1.x,rect1.y,rect1.width,rect1.height);
-		e.draw(g);
+		e.draw(g);//IF YOU COMMENT THIS OUT, YOU GET A SUPER COOL GRAPHIC EFFECT
 		rect1.draw(g);
+		rect2.draw(g);
 	}
 	public void animation(Graphics g){
 		try{
-	//		super.paint(g);  
+	//		super.paint(g);
+//			e.draw(g);
 		} catch (NullPointerException e){
 		}
 	}
 	public class refresh extends Thread{
 		public ScreenSaverAppletMain myapplet;
-		boolean horizontalposi = true;
-	    boolean verticalposi = true;
-		public int velocity = 1;
 		public void run(){
-	//		myapplet.repaint();
-	//		animation(myapplet.getGraphics());
+//			myapplet.repaint();
+//			animation(myapplet.getGraphics());//IF YOU UNCOMMENT THIS OUT, YOU GET A SUPER COOL GRAPHIC EFFECT
 			while(true){
 			myapplet.repaint();
 			animation(myapplet.getGraphics());
 				try {
-					sleep(2);
-					
-					if (myapplet.rect1.x <=20){
-						horizontalposi = true;
-					}
-					if (myapplet.rect1.x + myapplet.rect1.width >=1340){
-						horizontalposi = false;
-					}
-					if (myapplet.rect1.y <=40){
-						verticalposi = true;
-					}
-					if (myapplet.rect1.y + myapplet.rect1.width >=700){	
-						verticalposi = false;
-					}
-					if (horizontalposi == true){
-						myapplet.rect1.x = myapplet.rect1.x +velocity;
-					} else {
-						myapplet.rect1.x = myapplet.rect1.x -velocity;
-					}
-					if (verticalposi == true){
-						myapplet.rect1.y = myapplet.rect1.y +velocity;
-					} else {
-						myapplet.rect1.y = myapplet.rect1.y -velocity;					
-					}
-						
+					sleep(20);
 					} catch (InterruptedException e){
 						e.printStackTrace();
 				}
