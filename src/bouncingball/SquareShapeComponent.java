@@ -17,29 +17,14 @@ public class SquareShapeComponent extends Shape {
 		super.width=width;
 		super.height=width;
 		super.color=color;
+		super.clicked=clicked;
 	}
-	boolean clicked = false;
 	boolean horizontalposi = true;
     boolean verticalposi = true;
     boolean horivelocposi = true;
     boolean verticalVELOCITYposi = true;
 	int horivelocity = 1;
 	int vertivelocity = 1;
-//	public void click() {
-//    	this.addMouseListener(new MouseAdapter() {
-//            public void mousePressed(MouseEvent evt) {
-//            	clicked = true;
-//            }
-//            public void mouseReleased(MouseEvent evt) {
-//            	clicked = false;
-//            }
-//        });
-//    	this.addMouseMotionListener(new MouseMotionAdapter() {
-//            public void mouseDragged(MouseEvent evt) {
-//            	clicked = true;
-//            }
-//        });
-//    }
     public void paintComponent(Graphics g) {
     	if (clicked == false){
     		//HORIZONTAL
@@ -81,11 +66,7 @@ public class SquareShapeComponent extends Shape {
     			y = y -vertivelocity;
     		}
     	} else if (clicked == true) {
-    		if (verticalposi == true){
-//    			y = y +vertivelocity;
-    		} else {
-//    			y = y -vertivelocity;
-    		}
+    		//Its not going to do anything while its being dragged
     	}
         Graphics2D graphics2d = (Graphics2D) g;
         graphics2d.setColor(color);

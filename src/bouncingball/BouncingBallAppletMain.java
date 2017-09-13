@@ -96,10 +96,11 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 	}
     public void jPanel2MousePressed(MouseEvent evt) {
     	if ((evt.getX() >= rect3.x && evt.getX() <= rect3.x +100) && (evt.getY() >= rect3.y && evt.getY() <= rect3.y +100)){
-    		System.out.println("YOUVE FUCKING CLICKED ON IT");
     		rect3.x = evt.getX()-50;
         	rect3.y = evt.getY()-50;
     		dragging = true;
+    		rect3.clicked = true;
+    		System.out.println(rect3.clicked);
     	}
     }
     public void jPanel2MouseDragged(MouseEvent evt) {
@@ -107,11 +108,13 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
         if (dragging == true) {
         	rect3.x = evt.getX()-50;
         	rect3.y = evt.getY()-50;
-        	System.out.println("draggggyyyy");
+        	System.out.println(rect3.clicked);
         }
     }
     public void jPanel2MouseReleased(MouseEvent evt) {
     	dragging = false;
+    	rect3.clicked = false;
     	System.out.println("Released Fired");
+    	System.out.println(rect3.clicked);
     }
 }

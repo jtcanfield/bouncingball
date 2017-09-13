@@ -18,6 +18,7 @@ public class Shape extends JPanel {
 	public int width;
 	public int height;
 	public Color color;
+	public boolean clicked;
 	public void move(int changeInX, int changeInY){
         x += changeInX;
         y += changeInY;
