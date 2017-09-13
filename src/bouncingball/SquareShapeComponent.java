@@ -4,12 +4,8 @@ package bouncingball;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.JPanel;
-
+@SuppressWarnings("serial")
 public class SquareShapeComponent extends Shape {
 	public SquareShapeComponent(int x, int y, int width, Color color){
 		super.x=x;

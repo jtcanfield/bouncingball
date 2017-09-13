@@ -27,8 +27,8 @@ import bouncingball.Shape;
 @SuppressWarnings("serial")
 public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ {
 	boolean dragging = false;
-	Shape rect1 = new SquareShape(50, 50, 100, Color.red);
-	Shape rect2 = new SquareShape(1000, 500, 100, Color.green);
+	Shape rect1 = new SquareShapeComponent(50, 50, 100, Color.red);
+	Shape rect2 = new SquareShapeComponent(1000, 500, 100, Color.green);
 	Shape rect3 = new SquareShapeComponent(200, 200, 100, Color.black);
 	background background=new background();
     public static void main(String[] args) {
@@ -36,42 +36,47 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
         app.setVisible(true);
     }
 	public BouncingBallAppletMain(){
+		final Shape [] rectanglesdrawn = new Shape[3];
+		rectanglesdrawn[0]=rect1;
+		rectanglesdrawn[1]=rect2;
+		rectanglesdrawn[2]=rect3;
+		System.out.println(rectanglesdrawn[0]);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //        setSize(1360, 720);
 		refresh thread= new refresh();	
 		thread.myapplet = this;
 		thread.start();
-		jPanel2 = new Panel2();
-        jPanel2.addMouseListener(new MouseAdapter() {
+		jPanelvar = new FullWindowPanel();
+		jPanelvar.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent evt) {
-                jPanel2MousePressed(evt);
+                jPanel2MousePressed(evt, rectanglesdrawn);
             }
             public void mouseReleased(MouseEvent evt) {
-                jPanel2MouseReleased(evt);
+                jPanel2MouseReleased(evt, rectanglesdrawn);
             }
         });
-        jPanel2.addMouseMotionListener(new MouseMotionAdapter() {
+        jPanelvar.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent evt) {
-                jPanel2MouseDragged(evt);
+                jPanel2MouseDragged(evt, rectanglesdrawn);
             }
         });
-
         // add the component to the frame to see it!
-        this.setContentPane(jPanel2);
+        this.setContentPane(jPanelvar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 	}
-	private JPanel jPanel2;
-    class Panel2 extends JPanel {
-        Panel2() {
+	private JPanel jPanelvar;
+    class FullWindowPanel extends JPanel {
+    	FullWindowPanel() {
             // set a preferred size for the custom panel.
             setPreferredSize(new Dimension(1360, 720));
         }
     }
 	public void paint(Graphics g){
+    	//Void means the function does not return anything
 		background.draw(g);
-		rect1.draw(g);
-		rect2.draw(g);
+		rect1.paintComponent(g);
+		rect2.paintComponent(g);
 		rect3.paintComponent(g);
 	}
 	public void animation(Graphics g){
@@ -94,27 +99,32 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 			}
 		}
 	}
-    public void jPanel2MousePressed(MouseEvent evt) {
-    	if ((evt.getX() >= rect3.x && evt.getX() <= rect3.x +100) && (evt.getY() >= rect3.y && evt.getY() <= rect3.y +100)){
-    		rect3.x = evt.getX()-50;
-        	rect3.y = evt.getY()-50;
-    		dragging = true;
-    		rect3.clicked = true;
-    		System.out.println(rect3.clicked);
+	
+    public void jPanel2MousePressed(MouseEvent evt, Shape[] rectanglesdrawn) {
+    	for (Shape selected : rectanglesdrawn) {
+    		//selected is basically each item in the rectanglesdrawn array
+    		if ((evt.getX() >= selected.x && evt.getX() <= selected.x +100) && (evt.getY() >= selected.y && evt.getY() <= selected.y +100)){
+        		dragging = true;
+        		selected.clicked = true;
+        	}
     	}
     }
-    public void jPanel2MouseDragged(MouseEvent evt) {
-    	//Void means the function does not return anything
+    public void jPanel2MouseDragged(MouseEvent evt, Shape[] rectanglesdrawn) {
         if (dragging == true) {
-        	rect3.x = evt.getX()-50;
-        	rect3.y = evt.getY()-50;
-        	System.out.println(rect3.clicked);
+        	for (Shape selected : rectanglesdrawn) {
+        		if (selected.clicked == true){
+            		selected.x = evt.getX()-50;
+            		selected.y = evt.getY()-50;	
+        		}
+        	}
         }
     }
-    public void jPanel2MouseReleased(MouseEvent evt) {
+    public void jPanel2MouseReleased(MouseEvent evt, Shape[] rectanglesdrawn) {
     	dragging = false;
-    	rect3.clicked = false;
-    	System.out.println("Released Fired");
-    	System.out.println(rect3.clicked);
+    	for (Shape selected : rectanglesdrawn) {
+    		if (selected.clicked == true){
+        		selected.clicked = false;
+    		}
+    	}
     }
 }
