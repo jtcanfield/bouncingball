@@ -55,8 +55,8 @@ public class SquareShapeComponent extends Shape {
     			verticalVELOCITYposi = false;
     		}
     		if (vertivelocity == 0){
-    			verticalVELOCITYposi = true;
     			verticalposi = true;
+    			verticalVELOCITYposi = true;
     		}
     		if (verticalVELOCITYposi == true && vertivelocity <= 30){
     			vertivelocity = vertivelocity +1;
@@ -70,8 +70,10 @@ public class SquareShapeComponent extends Shape {
     			flipy = false; 
     			if (verticalposi == true){
     				verticalposi = false;
+    				verticalVELOCITYposi = false;
         		} else {
         			verticalposi = true;
+        			verticalVELOCITYposi = true;
         		}
     		}
     		if (verticalposi == true){

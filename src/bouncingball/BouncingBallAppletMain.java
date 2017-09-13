@@ -2,10 +2,12 @@ package bouncingball;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Area;
 
 //import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 //import java.awt.event.*;
 //import java.awt.event.MouseEvent;
@@ -84,6 +86,11 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 		} catch (NullPointerException e){
 		}
 	}
+	public boolean intersects(JPanel testa, JPanel testb){
+	    Rectangle rectB = testb.getBounds();
+	    Rectangle result = SwingUtilities.computeIntersection(testa.getX(), testa.getY(), testa.getWidth(), testa.getHeight(), rectB);
+	    return (result.getWidth() > 0 && result.getHeight() > 0);
+	}
 	public class refresh extends Thread{
 		public BouncingBallAppletMain myapplet;
 		public void run(){
@@ -99,14 +106,21 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 					for (Shape selected : rectanglesdrawn) {
 						for (Shape secondselected : rectanglesdrawn) {
 							if(selected != secondselected){
-								if(selected.x+100 == secondselected.x && ((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100))){
-									System.out.println("X AXIS COLLIDING");
-									selected.flipx = true;
-									secondselected.flipx = true;
-//									System.out.print(selected.x);
-//									System.out.println(selected.x+100);
-//									System.out.print(selected.y);
-//									System.out.println(selected.y+100);
+								System.out.println(intersects(selected, secondselected));
+//								if(selected.x+100 == secondselected.x && ((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100))){
+//									selected.flipx = true;
+//									secondselected.flipx = true;
+//								}
+//								if(((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100)) && ((selected.x >= secondselected.x && selected.x <= secondselected.x+100) || (secondselected.x >= selected.x && secondselected.x <= selected.x+100))){
+//									selected.flipy = true;
+//									secondselected.flipy = true;
+//								}
+								if(((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100)) && ((selected.x >= secondselected.x && selected.x <= secondselected.x+100) || (secondselected.x >= selected.x && secondselected.x <= selected.x+100))){
+									secondselected.width = 0;
+									secondselected.height = 0;
+									secondselected.x = 0;
+									secondselected.y = 0;
+									secondselected.clicked = true;
 								}
 							}
 						}
