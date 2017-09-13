@@ -3,6 +3,10 @@ package bouncingball;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class SquareShape extends Shape {
 	public SquareShape(int x, int y, int width, Color color){
@@ -12,7 +16,6 @@ public class SquareShape extends Shape {
 		super.height=width;
 		super.color=color;
 	}
-	
 	boolean horizontalposi = true;
     boolean verticalposi = true;
     boolean horivelocposi = true;
