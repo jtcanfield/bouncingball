@@ -14,6 +14,8 @@ public class SquareShapeComponent extends Shape {
 		super.height=width;
 		super.color=color;
 		super.clicked=clicked;
+		super.flipx=flipx;
+		super.flipy=flipy;
 	}
 	boolean horizontalposi = true;
     boolean verticalposi = true;
@@ -29,6 +31,14 @@ public class SquareShapeComponent extends Shape {
     		}
     		if (x + width >=1340){
     			horizontalposi = false;
+    		}
+    		if(flipx == true){
+    			flipx = false; 
+    			if (horizontalposi == true){
+    				horizontalposi = false;
+        		} else {
+        			horizontalposi = true;
+        		}
     		}
     		if (horizontalposi == true){
     			x = x +horivelocity;
@@ -56,10 +66,21 @@ public class SquareShapeComponent extends Shape {
     		if (vertivelocity <= 1 && y + width >=700){
     			vertivelocity = 0;
     		}
+    		if(flipy == true){
+    			flipy = false; 
+    			if (verticalposi == true){
+    				verticalposi = false;
+        		} else {
+        			verticalposi = true;
+        		}
+    		}
     		if (verticalposi == true){
     			y = y +vertivelocity;
     		} else {
     			y = y -vertivelocity;
+    		}
+    		if (y >= 602){
+    			y = 600;
     		}
     	} else if (clicked == true) {
     		//Its not going to do anything while its being dragged

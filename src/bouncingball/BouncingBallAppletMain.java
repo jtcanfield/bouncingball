@@ -40,7 +40,6 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 		rectanglesdrawn[0]=rect1;
 		rectanglesdrawn[1]=rect2;
 		rectanglesdrawn[2]=rect3;
-		System.out.println(rectanglesdrawn[0]);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //        setSize(1360, 720);
 		refresh thread= new refresh();	
@@ -93,8 +92,27 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 			animation(myapplet.getGraphics());
 				try {
 					sleep(20);
-					} catch (InterruptedException e){
-						e.printStackTrace();
+					final Shape [] rectanglesdrawn = new Shape[3];
+					rectanglesdrawn[0]=rect1;
+					rectanglesdrawn[1]=rect2;
+					rectanglesdrawn[2]=rect3;
+					for (Shape selected : rectanglesdrawn) {
+						for (Shape secondselected : rectanglesdrawn) {
+							if(selected != secondselected){
+								if(selected.x+100 == secondselected.x && ((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100))){
+									System.out.println("X AXIS COLLIDING");
+									selected.flipx = true;
+									secondselected.flipx = true;
+//									System.out.print(selected.x);
+//									System.out.println(selected.x+100);
+//									System.out.print(selected.y);
+//									System.out.println(selected.y+100);
+								}
+							}
+						}
+			    	}
+				} catch (InterruptedException e){
+					e.printStackTrace();
 				}
 			}
 		}
