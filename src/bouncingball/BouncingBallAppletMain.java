@@ -2,13 +2,13 @@ package bouncingball;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Area;
-
-//import javax.swing.BorderFactory;
+import bouncingball.Shape;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+//import java.awt.geom.Area;
+//import javax.swing.BorderFactory;
 //import java.awt.event.*;
 //import java.awt.event.MouseEvent;
 //import java.awt.Rectangle;
@@ -21,7 +21,6 @@ import javax.swing.WindowConstants;
 //import java.util.TimerTask;
 //import javax.swing.Timer;
 //import javax.swing.border.BevelBorder;
-import bouncingball.Shape;
 //import bouncingball.JavaPaintUI.Panel2;
 
 //ASK KELLY WHAT DAYS ARE LAB DAYS

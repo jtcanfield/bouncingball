@@ -1,12 +1,10 @@
 package bouncingball;
 
 
-import java.applet.Applet;
 import java.awt.Graphics;
 import java.awt.Color;
 
-@SuppressWarnings("serial")
-public class background extends Applet {
+public class background {
 	public background(){
 		
 	}
