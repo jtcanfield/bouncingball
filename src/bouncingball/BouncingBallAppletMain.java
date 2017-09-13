@@ -105,7 +105,8 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 					for (Shape selected : rectanglesdrawn) {
 						for (Shape secondselected : rectanglesdrawn) {
 							if(selected != secondselected){
-								System.out.println(intersects(selected, secondselected));
+								System.out.println(rect1.x);
+//								System.out.println(intersects(selected, secondselected));
 //								if(selected.x+100 == secondselected.x && ((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100))){
 //									selected.flipx = true;
 //									secondselected.flipx = true;
@@ -117,8 +118,8 @@ public class BouncingBallAppletMain extends JFrame /*implements MouseListener*/ 
 								if(((selected.y >= secondselected.y && selected.y <= secondselected.y+100) || (secondselected.y >= selected.y && secondselected.y <= selected.y+100)) && ((selected.x >= secondselected.x && selected.x <= secondselected.x+100) || (secondselected.x >= selected.x && secondselected.x <= selected.x+100))){
 									secondselected.width = 0;
 									secondselected.height = 0;
-									secondselected.x = 0;
-									secondselected.y = 0;
+									secondselected.x = 999999;
+									secondselected.y = 999999;
 									secondselected.clicked = true;
 								}
 							}
